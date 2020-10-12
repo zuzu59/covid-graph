@@ -1,2 +1,2 @@
-language = "html"
-run = "index_demo_canvas.html"
+language = "p5"
+run = ""
