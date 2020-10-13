@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js">
+
+	</script>
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js">
+
+	</script>
+	<script type="text/javascript">
+		window.onload = function () {
+var version = "0.1.1";
+var dataPoints = [];
+var dataPoints2 = [];
+var chart1 = new CanvasJS.Chart("chartContainer",{
+	title:{
+		text:"Cumul total d'infections en Suisse - Covid-1 toto"
+	},
+	data: [{
+		type: "line",
+		dataPoints : dataPoints,
+	}]
+});
+var chart2 = new CanvasJS.Chart("chartContainer2",{
+	title:{
+		text:"Nombre d'infectés par jour - Covid-19"
+	},
+	data: [{
+    color: "#808080",
+		type: "column",
+		dataPoints : dataPoints2,
+	}]
+});
+
+// https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerland/master/covid19_cases_switzerland_openzh.json
+
+// https://www.prevision-meteo.ch/services/json/lausanne
+
+
+$.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerland/master/covid19_cases_switzerland_openzh.json", function(data) {  
+	$.each(data.CH, function(key, value){
+		dataPoints.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: value, label: key});
+	});	
+  console.log(dataPoints)
+  
+  lastday = 0;
+  $.each(data.CH, function(key, value){
+		dataPoints2.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: value - lastday, label: key});
+	  lastday = value
+  });
+  console.log(dataPoints2)
+
+	chart1.render();
+  chart2.render();
+});
+}
+	</script>
+
+</head>
+
+<body>
+	<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+  <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+</body>
+
+</html>
