@@ -1,6 +1,6 @@
 # covid-graph
 Petit exercice d'affichage graphique de données Open DATA sur le Covid-19 pour la Suisse
-zf201012.1741
+zf201013.1118
 
 ## Buts
 Grâce l'initiative d'Open DATA, pleins de données sont en libre accès maintenant. Le but de ce document est de les afficher, sous forme de graphiques, dans une page WEB sans serveur WEB grâce au javascript embarqué des browsers. Nous avons dans chaque browser, y compris ceux des smartphones, un moteur javascript très efficace qu'il suffit de dompter. 
