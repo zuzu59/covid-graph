@@ -32,9 +32,6 @@ var chart = new CanvasJS.Chart("chartContainer",{
 
 // https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerland/master/covid19_cases_switzerland_openzh.json
 
-// https://www.prevision-meteo.ch/services/json/lausanne
-
-
 $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerland/master/covid19_cases_switzerland_openzh.json", function(data) {  
 	$.each(data.CH, function(key, value){
 		dataPoints.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: value, label: key});
