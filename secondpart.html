@@ -111,7 +111,7 @@ $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerla
 	  lastday = value
   });
 
-	//chart3.render();
+	chart3.render();
 });
 
 $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerland/master/covid19_hospitalized_switzerland_openzh.json", function(data) {  
@@ -121,6 +121,7 @@ $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerla
 		dataPoints32.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: value - lastday, label: key});
 	  lastday = value
   });
+    chart3.render();
 });
 
 $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerland/master/covid19_cases_switzerland_openzh.json", function(data) {  
@@ -131,8 +132,9 @@ $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerla
 	  lastday = value
   });
 
-	chart3.render();
+  chart3.render();
 });
+
 }
 	</script>
 
