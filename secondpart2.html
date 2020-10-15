@@ -4,7 +4,7 @@
 <head>
 	<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-  <script type="text/javascript" src="./meanmobile2.js"></script>
+  <script type="text/javascript" src="./summobile1.js"></script>
 	</script>
 	<script type="text/javascript">
 		window.onload = function () {
@@ -17,9 +17,11 @@ var dataPoints33 = [];
 var dataPoints4 = [];
 
 var lastDay = 0;
-var nbMean = 14;
+var nbSum = 14;
 var someData = [];
-var moveMean = [];
+var moveSum = [];
+
+
 
 var chart1 = new CanvasJS.Chart("chartContainer",{
 	title:{
@@ -165,9 +167,13 @@ $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerla
       someData.push({k: key, v: value});
     }); 
 
-  moveMean = meanmobile(someData, nbMean)
+  //moveMean = meanmobile(someData, nbMean)
+  console.log(someData)
+  moveSum = summobile(someData, nbSum)
+  console.log(moveSum)
 
-  lastDay = 0;
+
+/*   lastDay = 0;
   $.each(data.CH, function(key, value){
 		// dataPoints4.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: (value - lastday)/(8541410/100000/1);
     // dataPoints4.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: (moveMean[key][1] - lastDay)/(8541410/100000/1), label: key});
@@ -179,7 +185,7 @@ $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerla
   }); 
  
 	chart4.render();
-});
+ */});
 }
 	</script>
 
