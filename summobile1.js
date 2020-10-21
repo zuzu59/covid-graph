@@ -4,7 +4,8 @@ function summobile(someData, nbSum) {
 
   for (var i = nbSum; i < someData.length; i++){
     sum = someData[i].v - someData[i-nbSum].v;
-    moveSum.push([i,sum]);
+    if (sum < 0) sum = 0 
+    moveSum.push([someData[i].k,sum]);
   }
   return moveSum
 }

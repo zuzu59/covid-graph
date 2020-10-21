@@ -91,7 +91,7 @@ var chart3 = new CanvasJS.Chart("chartContainer3",{
 });
 var chart4 = new CanvasJS.Chart("chartContainer4",{
 	title:{
-		text:"Nombre d'infectés par 100'000 habitants - Covid-19"
+		text:"Incidence CH, pour 100'000 habitants calculée sur les 14 derniers jours - Covid-19"
 	},
 	data: [{
     color: "#808080",
@@ -170,25 +170,31 @@ $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerla
       someData.push({k: key, v: value});
     }); 
 
-  //moveMean = meanmobile(someData, nbMean)
   console.log(someData)
   moveSum = summobile(someData, nbSum)
   console.log(moveSum)
 
+  moveSum.forEach(nbCas14Jours)
 
-/*   lastDay = 0;
-  $.each(data.CH, function(key, value){
+
+function nbCas14Jours(item, index, arr) {
+  dataPoints4.push({x: new Date(arr[index][0]).valueOf() / 1000 / 86400 - 18317, y: arr[index][1]/(8541410/100000/1), label: arr[index][0]});
+}
+/*   function(key, value){
 		// dataPoints4.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: (value - lastday)/(8541410/100000/1);
     // dataPoints4.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: (moveMean[key][1] - lastDay)/(8541410/100000/1), label: key});
     //dataPoints4.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: value - lastDay, label: key});
-    dataPoints4.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: moveMean[key][1] - lastDay, label: key});
-	  lastDay = moveMean[key][1];
+    dataPoints4.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: value, label: key});
+	  //lastDay = moveMean[key][1];
  	  //lastDay = value
 
   }); 
- 
+ */ 
+
+
+  console.log(dataPoints4)
 	chart4.render();
- */});
+});
 }
 	</script>
 
