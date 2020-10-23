@@ -147,7 +147,7 @@ $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerla
   lastday = 0;
   $.each(data.CH, function(key, value){
     var diff = value - lastday
-    if (diff < 0) diff = null
+    if (diff <= 0) diff = null
 		dataPoints2.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: diff, label: key});
 	  lastday = value
   }); 
@@ -161,7 +161,7 @@ $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerla
   lastday = 0;
   $.each(data.CH, function(key, value){
     var diff = value - lastday
-    if (diff < 0) diff = null
+    if (diff <= 0) diff = null
 		dataPoints31.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: diff, label: key});
 	  lastday = value
   });
@@ -174,7 +174,7 @@ $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerla
   lastday = 0;
   $.each(data.CH, function(key, value){
     var diff = value - lastday
-    if (diff < 0) diff = null
+    if (diff <= 0) diff = null
 		dataPoints32.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: diff, label: key});
 	  lastday = value
   });
@@ -187,9 +187,9 @@ $.getJSON("https://raw.githubusercontent.com/daenuprobst/covid19-cases-switzerla
   
   lastday = 0;
   $.each(data.CH, function(key, value){
-    var diff = value - lastday
-    if (diff < 0) diff = null
-		dataPoints33.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: diff/10, label: key});
+    var diff = (value - lastday)/10
+    if (diff <= 0) diff = null
+		dataPoints33.push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: diff, label: key});
 	  lastday = value
   });
 
@@ -225,7 +225,7 @@ function graphTopCantons(item, index, arr) {
   lastday = 0;
   $.each(data[item], function(key, value){
     var diff = value - lastday
-    if (diff < 0) diff = null
+    if (diff <= 0) diff = null
 		dataPoints5[index].push({x: new Date(key).valueOf() / 1000 / 86400 - 18317, y: diff, label: key});
 	  lastday = value
   }); 
